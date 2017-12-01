@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Instructor Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="col-md-6 col-md-offset-2">
+<form th:action="@{/addInstructor}" th:object="${instructor}" method="post">
+<input type="hidden" th:field="${instructor.id}" placeholder="Enter instructor Name">
+
+<div class="form-group">
+    <label>Student's First Name</label>
+    <input class="form-control" type="text" th:field="${instructor.firstname}" placeholder="Enter instructor First Name">
+</div>
+
+<div class="form-group">
+    <label>Student's Last Name</label>
+    <input class="form-control" type="text" th:field="${instructor.lastname}" placeholder="Enter instructor Last Name">
+</div>
+
+
+<div class="form-group">
+    <label>Student's Contact Number</label>
+    <input class="form-control" type="text" th:field="${instructor.contactnumber}" placeholder="Enter instructor Contact Number">
+</div>
+
+<div class="form-group">
+    <label>Student's email</label>
+    <input class="form-control" type="text" th:field="${instructor.email}" placeholder="Enter instructor email">
+</div>
+
+<input type="file" name="file"/>
+<br/>
+<input call="btn btn-default" type="submit" value="Add Student">
+</form>
+
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

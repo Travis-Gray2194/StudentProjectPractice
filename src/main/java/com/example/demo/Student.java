@@ -17,6 +17,18 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    public Student() {
+
+
+    }
+
+    public Student(String firstname, String lastname, String contactnumber, String email, Set<Course> courses) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.contactnumber = contactnumber;
+        this.email = email;
+        this.courses = courses;
+    }
 
     @NotEmpty
     @NotNull
@@ -27,6 +39,14 @@ public class Student {
 
     @ManyToMany()
 private Set<Course>courses;
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
 
     public long getId() {
         return id;
@@ -67,4 +87,12 @@ private Set<Course>courses;
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void addCourse(Course c)
+    {
+        this.courses.add(c);
+    }
+
+
+
 }
