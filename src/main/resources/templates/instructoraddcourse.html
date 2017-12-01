@@ -8,7 +8,7 @@
 <body>
     <form  th:action="@{/addinstructortocourse}" th:object="${courselist}" method="post">
             <input type="text" th:value="${instructor.id}" name="instructorid">
-            <label th:inline="text">Adding Instructor to Course</label>
+            <label th:inline="text">Add Instructor to Course</label>
         <select name="courseid">
             <option th:each="acourse:${courselist}" th:value="${acourse.id}" th:text="${acourse.title}"></option>
         </select>

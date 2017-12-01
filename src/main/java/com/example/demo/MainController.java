@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by ${TravisGray} on 11/30/2017.
  */
@@ -100,13 +102,32 @@ public String saveStudent(@ModelAttribute ("student") Student student){
     }
 
     @PostMapping("/addstudenttocourse/{id}")
-    public String addStudenttoCourse(@RequestParam("studentid")String studentid, @RequestParam("courseid")String courseid,Model model){
+    public String addStudenttoCourse(HttpServletRequest request,Model model){
+        String studentid = request.getParameter("studentid");
+        String courseid = request.getParameter("courseid");
         Student student = studentRepository.findOne(new Long(studentid));
+        System.out.println("Student ID:"+ studentid);
+        System.out.println("Course ID:"+ courseid);
         student.addCourse(courseRepository.findOne(new Long(courseid)));
         studentRepository.save(student);
         model.addAttribute("studentslist",studentRepository.findAll());
         model.addAttribute("courseslist", courseRepository.findAll());
         return "redirect:/";
     }
+
+    @GetMapping("/searchcourses")
+    public String getSearch(){
+        return "searchcourseform";
+    }
+
+    @PostMapping("/searchcourses")
+    public String showSearchResults(HttpServletRequest request,Model model){
+        String searchCourseTitle = request.getParameter("search");
+        model.addAttribute("search",searchCourseTitle);
+        model.addAttribute("courseslist",courseRepository.findAllByTitleContainingIgnoreCase(searchCourseTitle));
+        model.addAttribute("courescount",courseRepository.findAllByTitleContainingIgnoreCase(searchCourseTitle));
+        return "searchcourselist";
+    }
+
 
 }

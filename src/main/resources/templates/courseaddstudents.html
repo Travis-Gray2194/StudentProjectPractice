@@ -8,9 +8,9 @@
 <body>
 <form  th:action="@{/addstudenttocourse}" th:object="${courselist}" method="post">
     <input type="text" th:value="${student.id}" name="studentid">
-    <label th:inline="text">Adding Student to Course</label>
-    <select name="studentid">
-        <option th:each="astudent:${courselist}" th:value="${acourse.id}" th:text="${acourse.title}"></option>
+    <label th:inline="text">Add Student to Course</label>
+    <select name="courseid">
+        <option th:each="acourse:${courselist}" th:value="${acourse.id}" th:text="${acourse.title}"></option>
     </select>
     <input call="btn btn-default" type="submit" value="Submit Information">
 </form>

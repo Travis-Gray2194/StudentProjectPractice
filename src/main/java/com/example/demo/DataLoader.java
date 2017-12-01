@@ -50,7 +50,7 @@ public class DataLoader implements CommandLineRunner {
 
         Student student2 = new Student("Brooke","Dean","2034569081","Brooke@montgromerycollge.edu");
         student.addCourse(course2);
-        studentRepository.save(student);
+        studentRepository.save(student2);
 
 
     }
