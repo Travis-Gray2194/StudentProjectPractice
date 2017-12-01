@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,12 +23,12 @@ public class Student {
 
     }
 
-    public Student(String firstname, String lastname, String contactnumber, String email, Set<Course> courses) {
+    public Student(String firstname, String lastname, String contactnumber, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.contactnumber = contactnumber;
         this.email = email;
-        this.courses = courses;
+        this.courses= new HashSet<>();
     }
 
     @NotEmpty

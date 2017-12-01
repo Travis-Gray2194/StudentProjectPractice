@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,12 +27,15 @@ public class Course {
     public Course() {
     }
 
-    public Course(String title, String coursenumber, String description, Set<Instructor> instructors, Set<Student> students) {
+
+
+    public Course(String title, String coursenumber, String description) {
         this.title = title;
         this.coursenumber = coursenumber;
         this.description = description;
-        this.instructors = instructors;
-        this.students = students;
+        //Creating constructor for Hash set
+        this.instructors= new HashSet<Instructor>();
+        this.students= new HashSet<Student>();
     }
 
     @ManyToMany(mappedBy = "courses")
