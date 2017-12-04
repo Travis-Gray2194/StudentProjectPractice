@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CourseRepository extends CrudRepository<Course,Long> {
     Iterable<Course> findAllByTitleContainingIgnoreCase(String search);
-    long countAllByTitleContaining(String search);
+//    long countAllByTitleContaining(String search);
 }
